@@ -5,12 +5,11 @@
   <title>Pick Your Favorite Drone!</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    
     #droneChoice,
     #taskChoice {
-      border: 1px solid black; 
-      border-radius: 5px; 
-      padding: 5px; 
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 5px;
     }
   </style>
 </head>
@@ -35,7 +34,7 @@
       <option value="10">10</option>
     </select>
   </div>
-  
+
   <h2>Select the Drone's Functionality</h2>
   <select id="taskChoice">
     <option value="1">Take aerial photographs</option>
@@ -51,24 +50,24 @@
   <div class="card" style="display: none;">
     <img class="card-image" src="" alt="Drone Image">
     <div class="card-details">
-        <h2 class="card-title"></h2>
-        <p class="card-description"></p>
-        <p class="card-price"></p>
-        <button class="add-to-cart-button">Add to Cart</button>
+      <h2 class="card-title"></h2>
+      <p class="card-description"></p>
+      <p class="card-price"></p>
+      <button class="add-to-cart-button">Add to Cart</button>
     </div>
   </div>
-  
+
   <!-- View Cart Button -->
   <button id="viewCartButton">View Cart</button>
-  
+
   <!-- Remove Items Button -->
   <button id="removeItemsButton">Remove Items</button>
-  
+
   <!-- Container to display cart items -->
   <div id="cartItemsContainer"></div>
 
   <div id="cartContainer">
-    <img id="cartIcon" src="drones/shopping-cart.png" alt="Cart" width="30" height="30">
+    <img id="cartIcon" src="shopping-cart.png" alt="Cart" width="30" height="30"> <!-- Updated image path -->
     <div id="cartTotal"></div>
   </div>
 

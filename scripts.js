@@ -121,7 +121,7 @@ nextButton.addEventListener("click", function() {
   if (currentImageIndex >= drones.length) {
       currentImageIndex = 0;
   }
-  currentDroneImage.src = drones[currentImageIndex].image;
+  currentDroneImage.src = "drones/" + drones[currentImageIndex].image; // Updated image path
   droneChoice.selectedIndex = currentImageIndex;
   updateDroneDescription();
 });
@@ -146,7 +146,7 @@ function addToCart() {
   const chosenDroneIndex = droneChoice.selectedIndex;
   const chosenDrone = drones[chosenDroneIndex];
   cartItems.push(chosenDrone);
-  cartIcon.src = "drones/shopping-cart.png";
+  cartIcon.src = "shopping-cart.png"; // Updated image path
 }
 
 // Event listener for the "Add to Cart" button
@@ -175,13 +175,13 @@ addToCartButton.addEventListener("click", function() {
 function createDroneCard(drone) {
   const templateCard = document.querySelector(".card");
   const newCard = templateCard.cloneNode(true);
-  newCard.querySelector(".card-image").src = drone.image;
+  newCard.querySelector(".card-image").src = "drones/" + drone.image; // Updated image path
   newCard.querySelector(".card-title").textContent = drone.name;
   newCard.querySelector(".card-description").textContent = drone.description;
   newCard.querySelector(".card-price").textContent = `$${drone.price.toFixed(2)}`;
   newCard.querySelector(".add-to-cart-button").addEventListener("click", function() {
       cartItems.push(drone);
-      cartIcon.src = "drones/shopping-cart.png";
+      cartIcon.src = "shopping-cart.png"; // Updated image path
       const totalPriceWithTax = calculateTotalPrice();
       const cartTotalElement = document.getElementById("cartTotal");
       cartTotalElement.textContent = "Total Price (including CA tax of 7.25%): $" + totalPriceWithTax.toFixed(2);
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", showCards);
 // Event listener for droneChoice dropdown
 droneChoice.addEventListener("change", function() {
   const selectedDroneIndex = droneChoice.selectedIndex;
-  currentDroneImage.src = drones[selectedDroneIndex].image;
+  currentDroneImage.src = "drones/" + drones[selectedDroneIndex].image; // Updated image path
   updateDroneDescription();
 });
 
@@ -256,6 +256,6 @@ function addToCart() {
   const chosenDroneIndex = droneChoice.selectedIndex;
   const chosenDrone = drones[chosenDroneIndex];
   cartItems.push(chosenDrone);
-  cartIcon.src = "drones/shopping-cart.png";
+  cartIcon.src = "shopping-cart.png"; // Updated image path
   viewCart(); // Call viewCart function to update cart list immediately after adding a drone
 }

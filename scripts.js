@@ -121,7 +121,7 @@ nextButton.addEventListener("click", function() {
   if (currentImageIndex >= drones.length) {
       currentImageIndex = 0;
   }
-  currentDroneImage.src = "drones/" + drones[currentImageIndex].image; // Updated image path
+  currentDroneImage.src = drones[currentImageIndex].image;
   droneChoice.selectedIndex = currentImageIndex;
   updateDroneDescription();
 });
@@ -146,7 +146,7 @@ function addToCart() {
   const chosenDroneIndex = droneChoice.selectedIndex;
   const chosenDrone = drones[chosenDroneIndex];
   cartItems.push(chosenDrone);
-  cartIcon.src = "shopping-cart.png"; // Updated image path
+  cartIcon.src = "drones/shopping-cart.png";
 }
 
 // Event listener for the "Add to Cart" button
@@ -175,13 +175,13 @@ addToCartButton.addEventListener("click", function() {
 function createDroneCard(drone) {
   const templateCard = document.querySelector(".card");
   const newCard = templateCard.cloneNode(true);
-  newCard.querySelector(".card-image").src = "drones/" + drone.image; // Updated image path
+  newCard.querySelector(".card-image").src = drone.image;
   newCard.querySelector(".card-title").textContent = drone.name;
   newCard.querySelector(".card-description").textContent = drone.description;
   newCard.querySelector(".card-price").textContent = `$${drone.price.toFixed(2)}`;
   newCard.querySelector(".add-to-cart-button").addEventListener("click", function() {
       cartItems.push(drone);
-      cartIcon.src = "shopping-cart.png"; // Updated image path
+      cartIcon.src = "drones/shopping-cart.png";
       const totalPriceWithTax = calculateTotalPrice();
       const cartTotalElement = document.getElementById("cartTotal");
       cartTotalElement.textContent = "Total Price (including CA tax of 7.25%): $" + totalPriceWithTax.toFixed(2);
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", showCards);
 // Event listener for droneChoice dropdown
 droneChoice.addEventListener("change", function() {
   const selectedDroneIndex = droneChoice.selectedIndex;
-  currentDroneImage.src = "drones/" + drones[selectedDroneIndex].image; // Updated image path
+  currentDroneImage.src = drones[selectedDroneIndex].image;
   updateDroneDescription();
 });
 
@@ -251,11 +251,23 @@ function removeItemsFromCart() {
 document.getElementById("removeItemsButton").addEventListener("click", removeItemsFromCart);
 
 
+// Function to update drone description based on selected options
+function updateDroneDescription() {
+  const chosenDroneIndex = droneChoice.selectedIndex;
+  const chosenTaskIndex = taskChoice.selectedIndex;
+  const chosenDrone = drones[chosenDroneIndex];
+  const chosenTask = taskChoice.options[chosenTaskIndex].text;
+
+  // Updated description to include speed and weight
+  droneResponse.textContent = `For task "${chosenTask}" with ${chosenDrone.name}: ${chosenDrone.description}. Speed: ${chosenDrone.speed}, Weight: ${chosenDrone.weight}`;
+}
+
+
 // Function to add selected drone to the cart
 function addToCart() {
   const chosenDroneIndex = droneChoice.selectedIndex;
   const chosenDrone = drones[chosenDroneIndex];
   cartItems.push(chosenDrone);
-  cartIcon.src = "shopping-cart.png"; // Updated image path
+  cartIcon.src = "drones/shopping-cart.png";
   viewCart(); // Call viewCart function to update cart list immediately after adding a drone
 }
